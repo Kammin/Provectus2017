@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startDetailed(int pos){
-        startActivity(new Intent(this, Detailed.class));
+        startActivity(new Intent(this, DetailedActivity.class));
         Log.d(TAG,"  "+pos);
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
 

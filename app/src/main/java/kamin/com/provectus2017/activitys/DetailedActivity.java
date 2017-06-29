@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import kamin.com.provectus2017.R;
 
 
-public class Detailed extends AppCompatActivity {
+public class DetailedActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

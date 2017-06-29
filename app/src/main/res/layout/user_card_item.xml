@@ -8,6 +8,7 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
+        android:background="@color/card_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -18,6 +19,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/card_back"
             android:orientation="horizontal">
 
             <ImageView
@@ -45,7 +47,6 @@
                     android:gravity="center"
                     android:text="login"
                     android:textAlignment="center"
-                    android:textColor="@color/album_title"
                     android:textSize="@dimen/album_title" />
 
                 <TextView
