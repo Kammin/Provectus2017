@@ -12,22 +12,23 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import kamin.com.provectus2017.R;
 import kamin.com.provectus2017.activitys.MainActivity;
 import kamin.com.provectus2017.model.User;
 
 
+
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
     private Context mContext;
-    public List<User> userList;
+
     MainActivity mainActivity;
 
     public UserAdapter(Context mContext) {
         this.mContext = mContext;
         mainActivity = (MainActivity) mContext;
-        userList = new ArrayList<>();
+        if(DataHolder.userList==null)
+            DataHolder.userList=new ArrayList<>();
     }
 
     @Override
@@ -35,14 +36,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_card_item, parent, false);
         return new MyViewHolder(itemView);
     }
-    public void setList(List<User> userList) {
-        this.userList = userList;
-    }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Log.d("TAG","nBindViewHolder ");
-        User user = userList.get(position);
+        User user = DataHolder.userList.get(position);
         holder.login.setText(user.getLogin().getLogin());
         holder.name.setText(user.getName().getFirstLast());
         Glide.with(mContext).load(user.getThumbnail()).into(holder.thumbnail);
@@ -50,7 +48,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return DataHolder.userList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener

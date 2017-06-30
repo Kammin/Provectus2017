@@ -27,4 +27,17 @@ public class User {
     public String getThumbnail(){
         return picture.getThumbnail();
     }
+    public String getLarge(){
+        return picture.getLarge();
+    }
+    public String getFirst(){
+        return getName().first;
+    }
+
+    public String getLast(){
+        return getName().last;
+    }
+    public String getGender(){
+        return gender;
+    }
 }

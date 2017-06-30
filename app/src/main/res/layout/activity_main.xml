@@ -8,11 +8,15 @@
     android:background="@color/rec_view"
     tools:context="kamin.com.provectus2017.activitys.MainActivity">
 
+    <include layout="@layout/app_bar"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
         android:scrollbars="vertical" />
 
 </LinearLayout>

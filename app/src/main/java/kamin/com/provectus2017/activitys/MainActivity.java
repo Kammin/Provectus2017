@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -22,11 +23,14 @@ import com.google.gson.GsonBuilder;
 import java.util.Arrays;
 
 import kamin.com.provectus2017.R;
+import kamin.com.provectus2017.adapter.DataHolder;
 import kamin.com.provectus2017.adapter.UserAdapter;
 import kamin.com.provectus2017.model.ResponseBody;
 import kamin.com.provectus2017.network.StrRequest;
 import kamin.com.provectus2017.network.URLs;
 import kamin.com.provectus2017.network.VolleySingleton;
+
+import static kamin.com.provectus2017.adapter.DataHolder.userList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
     Gson gson;
     private RecyclerView recyclerView;
     private UserAdapter adapter;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initToolbar();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             if ((ActivityCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED))
@@ -59,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 ResponseBody resp = gson.fromJson(response, ResponseBody.class);
                 Log.d(TAG ,"  "+ resp.getUsers().length + " users loaded.  ");
-                adapter.userList.addAll(Arrays.asList(resp.getUsers()));
+                userList.addAll(Arrays.asList(resp.getUsers()));
                 adapter.notifyDataSetChanged();
             }
         };
@@ -68,20 +74,19 @@ public class MainActivity extends AppCompatActivity {
         gson = gsonBuilder.create();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        if(adapter==null)
         adapter = new UserAdapter(this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-        if(adapter.userList.size()==0)
+        if(DataHolder.userList.size()==0)
         makeRequest();
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 LinearLayoutManager mLayoutManager = (LinearLayoutManager)recyclerView.getLayoutManager();
-                if((adapter.userList.size()-mLayoutManager.findLastVisibleItemPosition())<50)
+                if((DataHolder.userList.size()-mLayoutManager.findLastVisibleItemPosition())<50)
                     makeRequest();
             }
         });
@@ -95,8 +100,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startDetailed(int pos){
-        startActivity(new Intent(this, DetailedActivity.class));
-        Log.d(TAG,"  "+pos);
+        Intent intent = new Intent(this, DetailedActivity.class);
+        intent.putExtra("position", pos);
+        startActivity(intent);
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
 
     }
@@ -110,5 +116,12 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults[0] == PackageManager.PERMISSION_DENIED)
                     Log.d(TAG, "DENIED");
             }
+    }
+
+    private void initToolbar() {
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        setTitle(getString(R.string.app_name));
+        mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 }

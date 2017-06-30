@@ -8,4 +8,8 @@ public class Picture {
     public String getThumbnail(){
         return thumbnail;
     }
+
+    public String getLarge(){
+        return large;
+    }
 }
