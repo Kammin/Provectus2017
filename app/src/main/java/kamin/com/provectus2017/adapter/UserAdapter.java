@@ -14,9 +14,9 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import kamin.com.provectus2017.R;
+import kamin.com.provectus2017.Utils.DataHolder;
 import kamin.com.provectus2017.activitys.MainActivity;
 import kamin.com.provectus2017.model.User;
-
 
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
@@ -41,8 +41,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Log.d("TAG","nBindViewHolder ");
         User user = DataHolder.userList.get(position);
-        holder.login.setText(user.getLogin().getLogin());
-        holder.name.setText(user.getName().getFirstLast());
+        holder.login.setText(user.getSignature());
+        holder.name.setText(user.getSignature());
         Glide.with(mContext).load(user.getThumbnail()).into(holder.thumbnail);
     }
 

@@ -10,8 +10,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import kamin.com.provectus2017.R;
-import kamin.com.provectus2017.adapter.DataHolder;
+import kamin.com.provectus2017.Utils.DataHolder;
 import kamin.com.provectus2017.model.User;
 
 
@@ -21,7 +22,7 @@ public class DetailedActivity extends AppCompatActivity {
     int position=0;
     User user;
     ImageView ivLargePhoto;
-    TextView first_name,last_name,gender;
+    TextView siqnature, mail, street, city, state, postcode, dob, registered, phone, cell, name, value, username, password, salt, md5, sha1, sha256;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,17 +37,53 @@ public class DetailedActivity extends AppCompatActivity {
 
     void initView(){
         ivLargePhoto = (ImageView)findViewById(R.id.ivLargePhoto);
-        first_name = (TextView)findViewById(R.id.first_name);
-        last_name = (TextView)findViewById(R.id.last_name);
-        gender = (TextView) findViewById(R.id.gender);
+        siqnature = (TextView) findViewById(R.id.signature);
+        mail = (TextView) findViewById(R.id.mail);
+
+        street = (TextView)findViewById(R.id.street);
+        city = (TextView)findViewById(R.id.city);
+        state = (TextView) findViewById(R.id.state);
+        postcode = (TextView) findViewById(R.id.postcode);
+
+        dob = (TextView)findViewById(R.id.dob);
+        registered = (TextView)findViewById(R.id.registered);
+        phone = (TextView) findViewById(R.id.phone);
+        cell = (TextView) findViewById(R.id.cell);
+        name = (TextView)findViewById(R.id.name);
+        value = (TextView)findViewById(R.id.value);
+
+        username = (TextView)findViewById(R.id.username);
+        password = (TextView)findViewById(R.id.password);
+        salt = (TextView) findViewById(R.id.salt);
+        md5 = (TextView) findViewById(R.id.md5);
+        sha1 = (TextView)findViewById(R.id.sha1);
+        sha256 = (TextView)findViewById(R.id.sha256);
 
     }
 
     void fillView(){
-        Glide.with(this).load(user.getLarge()).into(ivLargePhoto);
-        first_name.setText(user.getFirst());
-        last_name.setText(user.getLast());
-        gender.setText(user.getGender());
+        Glide.with(this).load(user.getLarge()).bitmapTransform(new CropCircleTransformation(this)).into(ivLargePhoto);
+        siqnature.setText(user.getSignature());
+        mail.setText(user.getEmail());
+
+        street.setText(getResources().getString(R.string.street)+" "+user.getStreet());
+        city.setText(getResources().getString(R.string.city)+" "+user.getCity());
+        state.setText(getResources().getString(R.string.state)+" "+user.getState());
+        postcode.setText(getResources().getString(R.string.postcode)+" "+user.getPostcode());
+
+        dob.setText(getResources().getString(R.string.dob)+" "+user.getDob());
+        registered.setText(getResources().getString(R.string.registered)+" "+user.getRegistered());
+        phone.setText(getResources().getString(R.string.phone)+" "+user.getPhone());
+        cell.setText(getResources().getString(R.string.cell)+" "+user.getCell());
+        name.setText(getResources().getString(R.string.name)+" "+user.getName());
+        value.setText(getResources().getString(R.string.value)+" "+user.getValue());
+
+        username.setText(getResources().getString(R.string.username)+" "+user.getUsername());
+        password.setText(getResources().getString(R.string.password)+" "+user.getPassword());
+        salt.setText(getResources().getString(R.string.salt)+" "+user.getSalt());
+        md5.setText(getResources().getString(R.string.md5)+" "+user.getMd5());
+        sha1.setText(getResources().getString(R.string.sha1)+" "+user.getSha1());
+        sha256.setText(getResources().getString(R.string.sha256)+" "+user.getSha256());
 
     }
 

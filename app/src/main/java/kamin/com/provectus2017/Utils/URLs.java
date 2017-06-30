@@ -1,4 +1,4 @@
-package kamin.com.provectus2017.network;
+package kamin.com.provectus2017.Utils;
 
 
 public class URLs {

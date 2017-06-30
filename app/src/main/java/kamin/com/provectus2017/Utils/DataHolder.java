@@ -1,4 +1,4 @@
-package kamin.com.provectus2017.adapter;
+package kamin.com.provectus2017.Utils;
 
 
 import java.util.List;

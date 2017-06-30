@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Provectus2017</string>
+
+
+
+    <string name="street">Street</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="postcode">Postcode</string>
+    <string name="dob">Dob</string>
+    <string name="registered">Registered</string>
+    <string name="phone">Phone</string>
+    <string name="cell">Cell</string>
+    <string name="name">Name</string>
+    <string name="value">Value</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="salt">salt</string>
+    <string name="md5">md5</string>
+    <string name="sha1">sha1</string>
+    <string name="sha256">sha256</string>
+
+
+
 </resources>

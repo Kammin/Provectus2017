@@ -23,14 +23,14 @@ import com.google.gson.GsonBuilder;
 import java.util.Arrays;
 
 import kamin.com.provectus2017.R;
-import kamin.com.provectus2017.adapter.DataHolder;
+import kamin.com.provectus2017.Utils.DataHolder;
 import kamin.com.provectus2017.adapter.UserAdapter;
 import kamin.com.provectus2017.model.ResponseBody;
 import kamin.com.provectus2017.network.StrRequest;
-import kamin.com.provectus2017.network.URLs;
+import kamin.com.provectus2017.Utils.URLs;
 import kamin.com.provectus2017.network.VolleySingleton;
 
-import static kamin.com.provectus2017.adapter.DataHolder.userList;
+import static kamin.com.provectus2017.Utils.DataHolder.userList;
 
 public class MainActivity extends AppCompatActivity {
 

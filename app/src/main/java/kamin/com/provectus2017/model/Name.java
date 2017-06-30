@@ -6,7 +6,7 @@ public class Name {
     String first;
     String last;
 
-    public String getFirstLast(){
+    public String getSignature(){
         return first+" "+last;
     }
 

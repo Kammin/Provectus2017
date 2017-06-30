@@ -17,12 +17,6 @@ public class User {
     Picture picture;
     String nat;
 
-    public Name getName(){
-        return name;
-    }
-    public Login getLogin(){
-        return login;
-    }
 
     public String getThumbnail(){
         return picture.getThumbnail();
@@ -30,14 +24,64 @@ public class User {
     public String getLarge(){
         return picture.getLarge();
     }
-    public String getFirst(){
-        return getName().first;
+    public String getSignature(){
+        return name.getSignature();
+    }
+    public String getEmail(){
+        return email;
     }
 
-    public String getLast(){
-        return getName().last;
+
+    public String getStreet(){
+        return location.getStreet();
     }
-    public String getGender(){
-        return gender;
+    public String getCity(){
+        return location.getCity();
+    }
+    public String getState(){
+        return location.getState();
+    }
+    public String getPostcode(){
+        return location.getPostcode();
+    }
+
+
+    public String getDob(){
+        return dob;
+    }
+    public String getRegistered(){
+        return registered;
+    }
+    public String getPhone(){
+        return phone;
+    }
+    public String getCell(){
+        return cell;
+    }
+    public String getName(){
+        return ID.getIdName();
+    }
+    public String getValue(){
+        return ID.getValue();
+    }
+
+
+    public String getUsername(){
+        return login.getUsername();
+    }
+    public String getPassword(){
+        return login.getPassword();
+    }
+    public String getSalt(){
+        return login.getSalt();
+    }
+    public String getMd5(){
+        return login.getMd5();
+    }
+    public String getSha1(){
+        return login.getSha1();
+    }
+    public String getSha256(){
+        return login.getSha256();
     }
 }
